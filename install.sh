@@ -25,25 +25,6 @@ cat bash_profile >> ~/.bash_profile
 source ~/.bash_profile
 cd ~/tools/
 echo "done"
-
-
-
-#install go
-
-echo "Installing Golang"
-wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
-sudo tar -xvf go1.13.4.linux-amd64.tar.gz
-sudo mv go /usr/local
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
-echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
-source ~/.bash_profile
-sleep 1
-
-go help
 					
 #Don't forget to set up AWS credentials!
 echo "Don't forget to set up AWS credentials!"
@@ -180,12 +161,14 @@ chmod +x findomain-linux
 echo "downloading aquatone"
 wget --no-check-certificate -c https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
 unzip aquatone_*.zip
+chmod +x aquatone
 rm aquatone_*.zip
 rm README.md
 
 echo "downloading ffuf"
 wget --no-check-certificate -c https://github.com/ffuf/ffuf/releases/download/v1.2.1/ffuf_1.2.1_linux_amd64.tar.gz
 tar -xzvf ffuf_*.tar.gz
+chmod +x ffuf
 rm ffuf_*.tar.gz
 
 

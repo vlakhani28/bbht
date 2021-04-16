@@ -29,38 +29,22 @@ echo "done"
 
 
 #install go
-if [[ -z "$GOPATH" ]];then
-echo "It looks like go is not installed, would you like to install it now"
-PS3="Please select an option : "
-choices=("yes" "no")
-select choice in "${choices[@]}"; do
-        case $choice in
-                yes)
 
-					echo "Installing Golang"
-					wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
-					sudo tar -xvf go1.13.4.linux-amd64.tar.gz
-					sudo mv go /usr/local
-					export GOROOT=/usr/local/go
-					export GOPATH=$HOME/go
-					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-					echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
-					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
-					source ~/.bash_profile
-					sleep 1
-					break
-					;;
-				no)
-					echo "Please install go and rerun this script"
-					echo "Aborting installation..."
-					exit 1
-					;;
-	esac	
-done
-fi
+echo "Installing Golang"
+wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
+sudo tar -xvf go1.13.4.linux-amd64.tar.gz
+sudo mv go /usr/local
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
+echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
+echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
+source ~/.bash_profile
+sleep 1
 
-
+go help
+					
 #Don't forget to set up AWS credentials!
 echo "Don't forget to set up AWS credentials!"
 apt install -y awscli
@@ -72,10 +56,6 @@ echo "Don't forget to set up AWS credentials!"
 mkdir ~/tools
 cd ~/tools/
 
-#install aquatone
-echo "Installing Aquatone"
-go get github.com/michenriksen/aquatone
-echo "done"
 
 #install chromium
 echo "Installing Chromium"
@@ -160,17 +140,10 @@ pip install -r requirements.txt
 cd ~/tools/
 echo "done"
 
-echo "installing httprobe"
-go get -u github.com/tomnomnom/httprobe 
-echo "done"
-
 echo "installing unfurl"
-go get -u github.com/tomnomnom/unfurl 
-echo "done"
-
-echo "installing waybackurls"
-go get github.com/tomnomnom/waybackurls
-echo "done"
+wget --no-check-certificate -c https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
+tar xzf unfurl-linux-amd64-0.0.1.tgz
+sudo mv unfurl /usr/bin/
 
 echo "installing crtndstry"
 git clone https://github.com/nahamsec/crtndstry.git
@@ -185,6 +158,40 @@ cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 echo "done"
 
+echo "downloading nuclei"
+wget --no-check-certificate -c https://github.com/projectdiscovery/nuclei/releases/download/v2.3.4/nuclei_2.3.4_linux_amd64.tar.gz
+tar -xzvf nuclei_*.tar.gz
+mv nuclei /usr/local/bin/nuclei
+rm nuclei_2.3.4_linux_amd64.tar.gz
+
+echo "downloading httpx"
+wget --no-check-certificate -c https://github.com/projectdiscovery/httpx/releases/download/v1.0.5/httpx_1.0.5_linux_amd64.tar.gz
+tar -xvf httpx_*.tar.gz
+mv httpx /usr/local/bin/httpx
+rm httpx_1.0.5_linux_amd64.tar.gz
+rm README.md
+pip3 install waybackpy
+git clone https://github.com/projectdiscovery/nuclei-templates.git
+
+echo "downloading findomain"
+wget --no-check-certificate -c https://github.com/Findomain/Findomain/releases/download/4.0.1/findomain-linux
+chmod +x findomain-linux
+
+echo "downloading aquatone"
+wget --no-check-certificate -c https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+unzip aquatone_*.zip
+rm aquatone_*.zip
+rm README.md
+
+echo "downloading ffuf"
+wget --no-check-certificate -c https://github.com/ffuf/ffuf/releases/download/v1.2.1/ffuf_1.2.1_linux_amd64.tar.gz
+tar -xzvf ffuf_*.tar.gz
+rm ffuf_*.tar.gz
+
+
+echo "downloading ParamSpider"
+git clone https://github.com/devanshbatham/ParamSpider
+pip3 install -r ParamSpider/requirements.txt
 
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"

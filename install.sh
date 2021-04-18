@@ -178,6 +178,7 @@ echo "downloading ParamSpider"
 git clone https://github.com/devanshbatham/ParamSpider
 pip3 install -r ParamSpider/requirements.txt
 
+pip3 install gittyleaks
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

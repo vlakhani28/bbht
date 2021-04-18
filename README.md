@@ -22,3 +22,29 @@
 - aquatone
 - ffuf
 - ParamSpider
+- subfinder
+- massDNS
+- subDomainizer
+- knockpy
+- subbrute
+- GittyLeaks
+- Asset Finder
+- Amass
+- SecretX
+- LinkFinder
+- Subjack
+- GoBuster
+- XEEinjector
+- XSRFProbe
+- XSStrike
+- Open Redirect Scanner
+- NMap
+- HTTProbe
+- Wa00f
+- gau
+- BountyIt
+- dalfox
+- gf
+- subzy
+- JHaddix Wordlist
+- Nahamsec Wordlist

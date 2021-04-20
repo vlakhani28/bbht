@@ -180,7 +180,7 @@ rm nuclei_2.3.4_linux_amd64.tar.gz
 echo "downloading subfinder"
 wget --no-check-certificate -c https://github.com/projectdiscovery/subfinder/releases/download/v2.4.7/subfinder_2.4.7_linux_amd64.tar.gz
 tar -xzvf subfinder_*.tar.gz
-mv subfinder /usr/local/bin/nuclei
+mv subfinder /usr/local/bin/subfinder
 rm subfinder_*
 
 echo "downloading httpx"

@@ -23,6 +23,18 @@ echo "installing nmap"
 apt-get install -y nmap
 echo "done"
 
+apt-get install nano
+
+echo "downloading naabu"
+wget --no-check-certificate -c https://github.com/projectdiscovery/naabu/releases/download/v2.0.3/naabu-linux-amd64.tar.gz
+tar -xvf naabu-*.tar.gz
+mv httpx /usr/local/bin/naabu
+rm naabu-*.tar.gz
+rm README.md
+rm LICENSE.md
+
+
+
 echo "installing wa00f"
 git clone https://github.com/EnableSecurity/wafw00f.git
 python3 wafw00f/setup.py install

@@ -27,9 +27,9 @@ apt-get install nano
 
 echo "downloading naabu"
 wget --no-check-certificate -c https://github.com/projectdiscovery/naabu/releases/download/v2.0.3/naabu-linux-amd64.tar.gz
-tar -xvf naabu-*.tar.gz
+tar -xvf naabu-*.tar
 mv httpx /usr/local/bin/naabu
-rm naabu-*.tar.gz
+rm naabu-*.tar
 rm README.md
 rm LICENSE.md
 
